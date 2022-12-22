@@ -1,18 +1,20 @@
 #include "header.h"
 
-using namespace std;
-
 int main() {
     int n;
     cin >> n;
     bool printAsFixed;
-    cout << "Введите стиль вывода (1 -- фиксированный, 0 -- научный)\n";
+    cout << "Type print style (1 -- fixed, 0 -- scientific)\n";
     cin >> printAsFixed;
+
+    int precision;
+    cout << "Type precision\n";
+    cin >> precision;
 
     double** A = createMatrix(n);
     fillMatrix(A, n);
-    cout << "Матрица A\n";
-    printMatrix(A, n, n, printAsFixed);
+    cout << "Matrix A\n";
+    printMatrix(A, n, n, printAsFixed, precision);
     freeMemory(A, n);
 
     double B[10][10];
@@ -26,8 +28,8 @@ int main() {
     for (int i = 0; i < 10; ++i) {
         C[i] = B[i];
     }
-    cout << "Матрица B\n";
-    printMatrix(C, 10, 10, printAsFixed);
+    cout << "Matrix B\n";
+    printMatrix(C, 10, 10, 1, 0);
 
     cout << B << "  " << B[0] << "  " << B[2] << endl;
 	cout << B[0][0] << "  " << **B << "  " << *B[0] << endl;
