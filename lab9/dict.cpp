@@ -64,7 +64,7 @@ void deleteWord(Dictionary* dict, int& n) {
     cin >> buff;
 
     for (int i = 0; i < n; ++i) {
-        if (!strcmp(dict[i].eng, buff) || !strcmp(dict[i].rus, buff)) {
+        if (strcmp(dict[i].eng, buff) == 0 || strcmp(dict[i].rus, buff) == 0) {
             delete dict[i].eng;
             delete dict[i].rus;
             for (int j = i; j < n - 1; ++j) {
@@ -120,8 +120,8 @@ void translateFromRussian(Dictionary* dict, int& n) {
     cin >> buff;
 
     for (int i = 0; i < n; ++i) {
-        if (!strcmp(dict[i].rus, buff)) {
-            cout << dict[i].eng << endl;
+        if (strcmp(dict[i].rus, buff) == 0) {
+            cout << "Перевод слова " << buff << ": " << dict[i].eng << endl;
             return;
         }
     }
